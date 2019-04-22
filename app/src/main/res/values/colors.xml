@@ -3,4 +3,30 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="GLC">#09396A</color>
+        <color name="white">#000000</color>
+        <color name="feed_bg">#d3d6db</color>
+        <color name="feed_item_bg">#ffffff</color>
+        <color name="feed_item_border">#c2c3c8</color>
+        <color name="link">#0a80d1</color>
+        <color name="timestamp">#a0a3a7</color>
+        <color name="haha">#f4cf6b</color>
+        <color name="background">#8885a4</color>
+        <color name="spinnerWhite">#ffffff</color>
+        <color name="spinnerRed">#FFFF0000</color>
+        <color name="spinnerSemiRed">#ff8080</color>
+        <color name="spinnerOrange">#fcac00</color>
+        <color name="spinnerYellow">#fff94a</color>
+        <color name="spinnerSemiYellow">#fffdbf</color>
+        <color name="spinnerGreen">#47fc00</color>
+        <color name="spinnerSemiGreen">#ccffa3</color>
+        <color name="spinnerSky">#738cf9f7</color>
+        <color name="spinnerBlue">#738bb4d1</color>
+        <color name="spinnerIndigo">#97000889</color>
+        <color name="spinnerPupple">#9d3100f4</color>
+        <color name="spinnerGray">#73a3a3a3</color>
+        <color name="spinnerBlack">#9f000000</color>
+
+
+
 </resources>
