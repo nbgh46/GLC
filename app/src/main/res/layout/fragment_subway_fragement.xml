@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/transparent"
+              android:orientation="vertical">
+
+    <TextView
+            android:text="가천대역 지하철 도착정보"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:gravity="center" android:layout_marginTop="10dp" android:layout_marginBottom="50dp"
+            android:textIsSelectable="false" android:textStyle="bold"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:paddingBottom="7dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+            >
+
+                <TextView
+                        android:id="@+id/prev_station"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:includeFontPadding="false"
+                        android:text="복정역"
+                        android:textColor="#000000"
+                        android:textSize="12sp"
+                        android:visibility="visible"/>
+
+                <TextView
+                        android:id="@+id/stop_station_nm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:includeFontPadding="false"
+                        android:text="가천대역"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:visibility="visible"/>
+
+                <TextView
+                        android:id="@+id/next_station"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:includeFontPadding="false"
+                        android:text="태평역"
+                        android:textColor="#000000"
+                        android:textSize="12sp"
+                        android:visibility="visible"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                        <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#d6d6d6"/>
+
+                        <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:paddingLeft="5dp">
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="[이번열차]"
+                                    android:textColor="#000000"
+                                    android:textSize="12sp"/>
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                <TextView
+                                        android:id="@+id/up_line_arvl_1_msg_heading"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="도착정보가 없습니다."
+                                        android:textColor="#000000"
+                                        android:textSize="12sp"/>
+
+                                <TextView
+                                        android:id="@+id/up_line_arvl_1_msg"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="-"
+                                        android:textColor="#e73921"
+                                        android:textSize="12sp"/>
+                            </LinearLayout>
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:text="[다음열차]"
+                                    android:textColor="#000000"
+                                    android:textSize="12sp"/>
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                <TextView
+                                        android:id="@+id/up_line_arvl_2_msg_heading"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="도착정보가 없습니다."
+                                        android:textColor="#000000"
+                                        android:textSize="12sp"/>
+
+                                <TextView
+                                        android:id="@+id/up_line_arvl_2_msg"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="-"
+                                        android:textColor="#e73921"
+                                        android:textSize="12sp"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#d6d6d6"/>
+
+                        <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:paddingLeft="5dp">
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="[이번열차]"
+                                    android:textColor="#000000"
+                                    android:textSize="12sp"/>
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                <TextView
+                                        android:id="@+id/down_line_arvl_1_msg_heading"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="도착정보가 없습니다."
+                                        android:textColor="#000000"
+                                        android:textSize="12sp"/>
+
+                                <TextView
+                                        android:id="@+id/down_line_arvl_1_msg"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="-"
+                                        android:textColor="#e73921"
+                                        android:textSize="12sp"/>
+                            </LinearLayout>
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:text="[다음열차]"
+                                    android:textColor="#000000"
+                                    android:textSize="12sp"/>
+
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                <TextView
+                                        android:id="@+id/down_line_arvl_2_msg_heading"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="도착정보가 없습니다."
+                                        android:textColor="#000000"
+                                        android:textSize="12sp"/>
+
+                                <TextView
+                                        android:id="@+id/down_line_arvl_2_msg"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="-"
+                                        android:textColor="#e73921"
+                                        android:textSize="12sp"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#d6d6d6"/>
+                    </LinearLayout>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#d6d6d6"/>
+                </LinearLayout>
+
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/subwayline"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+            android:text="새로고침"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/subway_btn" android:layout_gravity="center"
+            android:background="@drawable/bg_mybutton2"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" android:textStyle="bold"/>
+</LinearLayout>

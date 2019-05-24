@@ -4,7 +4,7 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context=".LoginActivity">
+                                             tools:context=".member.LoginActivity">
 
     <RelativeLayout
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_above="@+id/login_pwd"
                 android:layout_centerHorizontal="true"
                 android:ems="10"
-                android:hint="아이디"
+                android:hint="이메일"
                 android:inputType="textPersonName"
                 android:textColor="@color/feed_item_bg"
                 android:textColorHint="@color/feed_item_bg"
@@ -48,19 +48,19 @@
 
         <Button
                 android:id="@+id/login_btn"
-                android:layout_width="242dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/login_regibtn"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/mybutton"
+
                 android:fontFamily="casual"
                 android:text="로그인"
                 android:textAlignment="center"
                 android:textColor="@android:color/background_dark"
                 android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" android:background="@drawable/bg_mybutton"/>
 
         <TextView
                 android:id="@+id/login_regibtn"

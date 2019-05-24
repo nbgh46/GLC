@@ -12,7 +12,7 @@
         <color name="timestamp">#a0a3a7</color>
         <color name="haha">#f4cf6b</color>
         <color name="background">#8885a4</color>
-        <color name="spinnerWhite">#ffffff</color>
+        <color name="spinnerWhite">#FFFFFF</color>
         <color name="spinnerRed">#FFFF0000</color>
         <color name="spinnerSemiRed">#ff8080</color>
         <color name="spinnerOrange">#fcac00</color>
@@ -26,7 +26,10 @@
         <color name="spinnerPupple">#9d3100f4</color>
         <color name="spinnerGray">#73a3a3a3</color>
         <color name="spinnerBlack">#9f000000</color>
-
+    <color name="weatherColor1">#F9FCFF</color>
+    <color name="weather2">#F3F9FE</color>
+    <color name="weather3">#8FC8FE</color>
+    <color name="weather4">#FFFFFF</color>
 
 
 </resources>

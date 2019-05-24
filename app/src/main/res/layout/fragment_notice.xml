@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".notice.NoticeFragment" android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/notice_layout2" android:visibility="gone">
+        <Button
+                android:text="돌아가기"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/notice_web_back_btn"
+                android:background="@drawable/bg_mybutton2" android:textSize="18sp"
+                android:textColor="@color/common_google_signin_btn_text_dark_default" android:textStyle="bold"/>
+        <WebView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/notice_webview" android:visibility="visible"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/notice_layout">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="가천대 컴퓨터 공학과 공지사항" android:textSize="25sp" android:gravity="center"
+                android:layout_marginBottom="10dp" android:layout_marginTop="10dp"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <Button
+                    android:text="이전페이지"
+                    android:layout_height="wrap_content" android:id="@+id/notice_back_btn" android:layout_margin="5dp"
+                    android:layout_weight="1" android:background="@drawable/bg_mybutton2"
+                    android:textColor="@color/common_google_signin_btn_text_dark_default" android:textStyle="bold"
+                    android:layout_width="0dp"/>
+            <Button
+                    android:text="다음페이지"
+                    android:layout_height="wrap_content" android:id="@+id/notice_up_btn" android:layout_margin="5dp"
+                    android:layout_weight="1" android:background="@drawable/bg_mybutton2"
+                    android:textColor="@color/common_google_signin_btn_text_dark_default" android:textStyle="bold"
+                    android:layout_width="0dp"/>
+        </LinearLayout>
+        <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/notice_listview"/>
+    </LinearLayout>
+
+</LinearLayout>

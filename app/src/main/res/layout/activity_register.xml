@@ -4,7 +4,7 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context=".RegisterActivity">
+                                             tools:context=".member.RegisterActivity">
 
     <RelativeLayout
             android:layout_width="match_parent"
@@ -25,33 +25,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="75dp"
                 android:ems="10"
-                android:hint="아이디"
-                android:inputType="textPersonName"
-                android:textColor="@color/common_google_signin_btn_text_dark_default"
-                android:textColorHint="@color/common_google_signin_btn_text_dark_default"
-                android:textStyle="bold"/>
-
-        <EditText
-                android:id="@+id/regi_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/regi_pwd"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
-                android:hint="이름"
-                android:inputType="textPersonName"
-                android:textColor="@color/common_google_signin_btn_text_dark_default"
-                android:textColorHint="@color/common_google_signin_btn_text_dark_default"
-                android:textStyle="bold"/>
-
-        <EditText
-                android:id="@+id/regi_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/regi_name"
-                android:layout_centerHorizontal="true"
-                android:ems="10"
-                android:hint="나이"
+                android:hint="이메일"
                 android:inputType="textPersonName"
                 android:textColor="@color/common_google_signin_btn_text_dark_default"
                 android:textColorHint="@color/common_google_signin_btn_text_dark_default"
@@ -65,7 +39,7 @@
                 android:layout_centerHorizontal="true"
                 android:ems="10"
                 android:hint="비밀번호"
-                android:inputType="textPersonName"
+                android:inputType="textPassword"
                 android:textColor="@color/common_google_signin_btn_text_dark_default"
                 android:textColorHint="@color/common_google_signin_btn_text_dark_default"
                 android:textStyle="bold"/>
@@ -75,11 +49,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="191dp"
-                android:background="@drawable/mybutton"
+                android:layout_marginBottom="310dp"
+                android:background="@drawable/bg_mybutton"
                 android:text="회원가입"
                 android:textColor="@color/cardview_dark_background"
-                android:textStyle="bold"/>
+                android:textStyle="bold" android:layout_alignParentEnd="true" android:layout_marginEnd="160dp"
+                android:layout_alignParentStart="true" android:layout_marginStart="163dp"
+                android:layout_marginTop="210dp"
+                android:layout_below="@+id/regi_pwd"/>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
