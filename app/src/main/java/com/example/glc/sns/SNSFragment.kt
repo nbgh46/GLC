@@ -1,11 +1,13 @@
 package com.example.glc.sns
 
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,12 +56,16 @@ class SNSFragment : Fragment() , SwipeRefreshLayout.OnRefreshListener {
         var messageList = ArrayList<SNS_list?>()
         var import_list : SNS_list?
         var SNS_adapter :SNS_adapter
+        val sns_recylce = view.findViewById<RecyclerView>(R.id.sns_recycle)
+
+
         val mlistListener = object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
 
             }
             override fun onDataChange(p0: DataSnapshot) {
                     messageList.clear()
+                    messageList.add(SNS_list("test","test","test","test","test"))
                 for(datasnapshot : DataSnapshot in p0.children){
                      import_list =datasnapshot.getValue(SNS_list::class.java)
 
@@ -70,9 +76,9 @@ class SNSFragment : Fragment() , SwipeRefreshLayout.OnRefreshListener {
                 messageList.reverse()
 
 
-                
-                sns_recycle.adapter =SNS_adapter(messageList)
-                sns_recycle.layoutManager = LinearLayoutManager(context)
+
+                sns_recylce.adapter =SNS_adapter(messageList)
+                sns_recylce.layoutManager = LinearLayoutManager(context)
 
             }
         }
@@ -86,13 +92,19 @@ class SNSFragment : Fragment() , SwipeRefreshLayout.OnRefreshListener {
             onRefresh()
             swipe_sns.isRefreshing = false
         }
+        swipe_sns.setColorSchemeResources(
+            android.R.color.holo_blue_bright,
+            android.R.color.holo_green_light,
+            android.R.color.holo_orange_light,
+            android.R.color.holo_red_light
+        )
 
     }
 
     /*Recylcer view 위로 swipe시 refresh */
     override fun onRefresh() {
         //새로고침
-
+        fragmentManager!!.beginTransaction().detach(this).attach(this).commit()
 
     }
     /*Recylcer view 위로 swipe시 refresh */

@@ -154,11 +154,14 @@ class SNS_write : AppCompatActivity() {
 
                 //unique 한 파일명 만들기
 
+                val PD_imageupload = ProgressDialog(this)
+                PD_imageupload.setMessage("이미지를 업로드 중입니다.")
 
                 storageref.putFile(uri!!).addOnProgressListener {
-                    val progress = (100.0 * it.bytesTransferred) / it.totalByteCount
-                    System.out.println("Upload is $progress% done")
+                    PD_imageupload.show()
                 }.addOnSuccessListener {
+
+                    PD_imageupload.dismiss()
                     Toast.makeText(this, "글 입력이 완료되었습니다.", Toast.LENGTH_LONG).show()
                 }
 

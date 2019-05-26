@@ -1,6 +1,7 @@
 package com.example.glc.member
 
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -26,6 +27,9 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        //로그인 프로그래스 다이얼로그
+        val PD_login = ProgressDialog(this)
+            PD_login.setMessage("로그인 중입니다.")
 
         //파이어 베이스 인스턴스 초기화
         FirebaseApp.initializeApp(this)
@@ -51,11 +55,14 @@ class LoginActivity : AppCompatActivity() {
             //로그인 db 대조 과정 (login.kt 에서 정의한다.)
             if(id !="" && pwd!="") {//(db랑 일치 검사하는 함수)
 
+                //로그인 프로그래스 바 on
+                PD_login.show()
                 //파이어 베이스 에서 데이터 읽기
                 auth.signInWithEmailAndPassword(id,pwd).addOnCompleteListener(this){
                    if(it.isSuccessful) {
                        //db와 대조성공 아이디와 패스워드가 일치할 경우 mainactivity로 아이디와 패스워드를 넘기고 전환시킨다.
                        val intent = Intent(this, MainActivity::class.java)
+                       PD_login.dismiss()
                        startActivity(intent)
                        finish()
                    }else {
