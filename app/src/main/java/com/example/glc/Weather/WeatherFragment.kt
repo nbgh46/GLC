@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-
 import com.example.glc.R
 import kotlinx.android.synthetic.main.fragment_weather.*
 import okhttp3.OkHttpClient
@@ -18,7 +16,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 import retrofit2.http.GET
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
@@ -48,6 +45,8 @@ class WeatherFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //날씨 로딩 메서드 실행
         loadWeather()
 
 
@@ -63,6 +62,8 @@ class WeatherFragment : Fragment() {
         }
     }
 
+
+    /* 날씨 Retrofit 인터페이스 정의 */
     interface WeatherService{
         @GET(".")
         fun setweather(
@@ -71,10 +72,23 @@ class WeatherFragment : Fragment() {
         @Query("appid")appid:String
         ):Call<weatherRepo>
     }
+    /* 날씨 Retrofit 인터페이스 정의 */
 
+
+    /*===================================================================================================
+        날씨 데이터를 불러오는 메서드
+        -Retrofit 을 이용한 비동식 방식 통신
+        -http://api.openweathermap.org/data/2.5/weather/ url에 가천대의 위도 경도 , key 쿼리를 입력
+        -json 방식의 데이터를 클래스에 담는다
+        -현재 날씨상태 , 현재 온도 , 오늘 최저 , 최대온도 , 습도 , 기압 , 바람 속도 정보를 가져온다.
+        -pwittchen:weathericonview 라이브러리를 사용해서 날씨 icon 사용
+
+      ===================================================================================================*/
     fun loadWeather(){
 
         try{
+
+            /* retrofit 빌더 정의 , 위도 , 경도 , key 쿼리를 입력한다. */
             val okHttpClient = OkHttpClient().newBuilder()
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .connectTimeout(10, TimeUnit.MINUTES)
@@ -91,11 +105,18 @@ class WeatherFragment : Fragment() {
             val WeatherService = Weatherapi.create(WeatherService::class.java)
             val WeatherCall = WeatherService.setweather("37.450800","127.128814","a882ca5cc46bf7c6888a7fb89d16f02e")
 
+            /* retrofit 빌더 정의 , 위도 , 경도 , key 쿼리를 입력한다. */
             WeatherCall.enqueue(object : Callback<weatherRepo>{
 
                 override fun onResponse(call: Call<weatherRepo>, response: Response<weatherRepo>) {
+
+                    /*===============================================================================
+                        -비동기 방식 통신으로 json 데이터 를 가져옴
+                        -받아온 json 데이터를 클래스에 파싱
+                        -받아온 데이터를 ui에 매칭
+                        -icon 라이브러리를 사용해서 해당 날씨 상태에 맞게 icon 나오게 함
+                     ================================================================================*/
                     val currentWeather = response.body()?.weatherList     // 받아온 json 객체 생성
-                  //  Toast.makeText(context,"날씨 연결 성공",Toast.LENGTH_LONG).show()
                     weather_icon.setIconColor(Color.BLACK)
                     weather_icon.setIconSize(100)
                     setWeatherIcon(response.body()?.weatherList?.get(0)!!.icon)
@@ -135,6 +156,8 @@ class WeatherFragment : Fragment() {
 
     }
 
+
+    /*==================== 현재 날씨 상태에 맞게 icon 을 불러오는 메서드 ===================================*/
     fun setWeatherIcon(value :String){
         when(value){
             "01d" -> {weather_icon.setIconResource(getString(R.string.wi_day_sunny))}
@@ -157,12 +180,7 @@ class WeatherFragment : Fragment() {
             "11n" -> {weather_icon.setIconResource(getString(R.string.wi_night_rain))}
             "13n" -> {weather_icon.setIconResource(getString(R.string.wi_night_snow))}
             "50n" -> {weather_icon.setIconResource(getString(R.string.wi_dust))}
-
-
-
-
-
         }
     }
-
+/*==================== 현재 날씨 상태에 맞게 icon 을 불러오는 메서드 ===================================*/
 }

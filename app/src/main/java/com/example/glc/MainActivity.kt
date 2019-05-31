@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         /*=================================뷰페이저 프레그먼트 구현==============================================*/
 
-        //탭 레이아웃을 viewpager 와 연동 터치 스와이프시 탭 이동이 됨
+        //탭 레이아웃 탭 추가 및  viewpager 어댑터와 와 연동 터치 스와이프시 탭 이동이 됨
 
         tabLayout.setupWithViewPager(viewPager)
         tabLayout.addTab(tabLayout.newTab().setText("SNS"))
@@ -68,9 +68,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-
-    /* 뒤로가기 버튼 누를시 앱 종료 하지 다이얼로그 출력 후 종료하거나 취소 */
+    /* ==============뒤로가기 버튼 누를시 앱 종료 하지 다이얼로그 출력 후 종료하거나 취소 ==============================*/
     override fun onBackPressed(){
        // super.onBackPressed()
         AlertDialog.Builder(this).setTitle("정말로 종료하시겠습니까?").setCancelable(true)
@@ -79,7 +77,6 @@ class MainActivity : AppCompatActivity() {
     }.setNegativeButton("취소"){ dialog: DialogInterface?, which: Int ->}.show()
     }
 
-/* 뒤로가기 버튼 누를시 앱 종료 하지 다이얼로그 출력 후 종료하거나 취소 */
-
+    /* ==============뒤로가기 버튼 누를시 앱 종료 하지 다이얼로그 출력 후 종료하거나 취소 ==============================*/
 }
 

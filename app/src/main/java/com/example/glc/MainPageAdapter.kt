@@ -13,15 +13,20 @@ import com.example.glc.subway.SubwayFragement
 
 /*
       메인 화면에 뷰페이저 어댑터
-      탭 1. sns  탭 2.지하철 탭3.학식
+      탭 1. sns  탭 2.지하철 탭3 .학식 탭4. 공지사항 탭5.날씨
  */
 
 class MainPageAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager){
+
+    //탭 이름 배열 선언
     val tabTitle  = arrayOf("SNS","자히철","학식","공지사항","날씨")
+
+    //탭 숫자
     override fun getCount(): Int {
         return 5
     }
 
+    //탭 타이틀
     override fun getPageTitle(position: Int): CharSequence? {
         return tabTitle[position]
     }

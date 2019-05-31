@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName
 import retrofit2.http.GET
 
 /*
+    날씨 클래스
+    -OpenWeatherMap API 에서 받아올 데이터를 담을 클래스 정의
+    -JSON 방식 데이터를 받을수있도록 정의
     날씨 url
     현재날씨:
     http://api.openweathermap.org/data/2.5/weather?lat=37.450800&lon=127.128814&appid=a882ca5cc46bf7c6888a7fb89d16f02e

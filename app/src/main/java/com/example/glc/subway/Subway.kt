@@ -5,6 +5,12 @@ import org.simpleframework.xml.ElementList
 import org.simpleframework.xml.Root
 
 
+/*
+    지하철 API 클래스 구성
+    http://swopenapi.seoul.go.kr/api/subway/5a794d4a7a6e62673731706b4e6f7a/xml/realtimeStationArrival/0/5/
+    에서 받아올 XML 데이터를 받을 클래스
+ */
+
 @Root(name = "realtimeStationArrival", strict = false)
 class Subway {
     @get:ElementList(inline = true , required = false)

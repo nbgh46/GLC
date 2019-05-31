@@ -2,7 +2,7 @@ package com.example.glc.sns
 
 
 
-//type 1 글내용
+//type 1 sns feed item 클래스
 class SNS_list{
 
     var context_id =""   //글의 id
@@ -10,8 +10,7 @@ class SNS_list{
     var time :String? = ""   //현재시간
     var text = ""  //글내용
     var url = ""  //글 이미지 url 값값
-   // var Comment_num =0   //댓글 수
-    //var list_Comment = ArrayList<SNS_Comment>()  //댓글 객체 ArrayList
+
 
     constructor(context_id: String, writer_id: String?, time: String, text: String, url: String ) {
         this.context_id = context_id
@@ -31,7 +30,7 @@ class SNS_list{
         this.url = SNS_list.url
     }
 }
-//type2 댓글
+//type2 댓글 클래스
 class SNS_Comment{
 
 

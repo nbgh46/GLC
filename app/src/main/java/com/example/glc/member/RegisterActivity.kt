@@ -52,7 +52,7 @@ class RegisterActivity : AppCompatActivity() {
 
         regi_btn.setOnClickListener {
 
-            //회원가입 프로그래스다이얼로그
+            //회원가입 프로그래스다이얼로그 on
             PD_register.show()
 
          // EditText 에서 문자 가져오기
@@ -64,7 +64,12 @@ class RegisterActivity : AppCompatActivity() {
                 if(it.isSuccessful){
 
                     Toast.makeText(this,"회원가입 성공",Toast.LENGTH_LONG).show()
+
+                    //회원가입 프로그래스다이얼로그 off
+
                     PD_register.dismiss()
+
+                    //액티비티 종료
                     finish()
                 }else{
                     Toast.makeText(this,"회원가입 실패",Toast.LENGTH_LONG).show()

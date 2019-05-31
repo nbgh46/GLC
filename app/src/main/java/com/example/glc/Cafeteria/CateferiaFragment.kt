@@ -1,18 +1,12 @@
 package com.example.glc.Cafeteria
 
 
-import android.icu.lang.UCharacter.GraphemeClusterBreak.V
-import android.opengl.Visibility
+
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
-import android.view.ScaleGestureDetector
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-
-
-import com.example.glc.sns.SNSFragment
 import kotlinx.android.synthetic.main.fragment_cateferia.*
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,14 +16,9 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Url
-import java.io.IOException
 import java.lang.Exception
-import java.lang.reflect.Array
-import java.util.concurrent.TimeUnit
 
 
 
@@ -39,10 +28,7 @@ import java.util.concurrent.TimeUnit
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- *
- */
+
 class CateferiaFragment : Fragment() {
 
     override fun onCreateView(
@@ -56,6 +42,13 @@ class CateferiaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        /*
+            학식 메뉴 구성
+            - FrameLayout 으로 구성 , 버튼 클릭시 선택layout 과 detaillayout 전환
+            - 버튼 클릭시 Detail Layout 으로 이동하고 파싱할 url을 대입
+            - 해당 요일 클릭시 학식 데이터 로딩
+         */
 
         var cafeteria_type :String =""
         var cafeteria_day : Int =0
@@ -154,8 +147,7 @@ class CateferiaFragment : Fragment() {
 
 
                     val url = response.body()
-                    //cafeteria_text2.text= response.body().toString()
-                    val doc = Jsoup.parse(response.body().toString())
+                  val doc = Jsoup.parse(response.body().toString())
                     doc.select("br").append("$$$")
                     for (i in 0..2) {
                         val element: Elements = doc.select("div.food_list table tbody tr").eq(cafeteria_day).select("td").eq(i)

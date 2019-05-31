@@ -11,21 +11,16 @@ import android.support.v7.widget.RecyclerView
 import android.view.*
 import android.widget.*
 import android.widget.Toast.makeText
-
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.glc.R
-
-
 import com.google.android.gms.auth.api.signin.internal.Storage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
-
 import kotlinx.android.synthetic.main.fragment_sns.*
 import kotlinx.android.synthetic.main.sns_comment_item_list.view.*
 import kotlinx.android.synthetic.main.sns_feed_item_ist.view.*
@@ -38,7 +33,7 @@ import java.lang.IllegalArgumentException
 
 class SNS_adapter(sns_list: ArrayList<SNS_list?>) : RecyclerView.Adapter<SNS_adapter.sns_listitemViewHolder>() {
 
-
+    //어댑터에 적용할 sns_list 클래스 arraylist  인자를 변수로 초기화 db에서 가져온 데이터
     private var sns_list: ArrayList<SNS_list?> = sns_list
 
 
@@ -48,13 +43,12 @@ class SNS_adapter(sns_list: ArrayList<SNS_list?>) : RecyclerView.Adapter<SNS_ada
 
 
     override fun getItemCount(): Int {
-
         return sns_list.size
     }
 
     override fun onBindViewHolder(holder: sns_listitemViewHolder, position: Int) {
 
-
+        //holder에 bindfeed 메서드를 통해 매칭
         holder.bindfeed(sns_list, position)
 
     }
@@ -94,8 +88,9 @@ class SNS_adapter(sns_list: ArrayList<SNS_list?>) : RecyclerView.Adapter<SNS_ada
 
         val viewGroup = parent
 
-        /* SNS 내용 데이터 바인딩 */
-        fun bindfeed(sns_list: ArrayList<SNS_list?>, position: Int) {
+        /*=============================== SNS 내용 데이터 바인딩 ================================*/
+        fun bindfeed(sns_list: ArrayList<SNS_list?>, position: Int) {  // 인자 db에서 가져온 sns_list(arrarylist) , position
+
 
 
             FirebaseStorage.getInstance().reference.child("images/")
@@ -149,8 +144,12 @@ class SNS_adapter(sns_list: ArrayList<SNS_list?>) : RecyclerView.Adapter<SNS_ada
 
         }
 
-
+/*=============================== SNS 내용 데이터 바인딩 ================================*/
     }
+
+
+
+
     /* ======================댓글 바인딩 하기기 ==================================*/
 
     /* ========================= 댓글 입력 함수===========================================================*/
@@ -161,22 +160,31 @@ class SNS_adapter(sns_list: ArrayList<SNS_list?>) : RecyclerView.Adapter<SNS_ada
         viewGroup: ViewGroup,
         itemview: View
     ): ArrayList<SNS_Comment?> {
+
+        //파이어 베이스 db 에서 comment 정보 가져오기
         val comment =
             FirebaseDatabase.getInstance().getReference("SNS_list").child(Commtted_object_Id).child("SNS_Comment")
 
+        //댓글 정보를 담을 Arraylist 선언
         var messageList = ArrayList<SNS_Comment?>()
+
+        //댓글을 가져오는 리스너 정의
         val Comment_list_Listener = object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
+            //성공시 messageList 에 데이터를 추가
             override fun onDataChange(p0: DataSnapshot) {
                 for (datasnapshot: DataSnapshot in p0.children) {
                     var import_list = datasnapshot.getValue(SNS_Comment::class.java)
-
                     messageList.add(import_list)
                 }
+
+                //댓글 ui 인플레이터 정의
                 val inflater = LayoutInflater.from(viewGroup.context)
+
+                /*============================= 댓글 수만큼 댓글 만들기 =======================================*/
                 for (i in messageList) {
                     val comment_inflate = inflater.inflate(R.layout.sns_comment_item_list, null, false)
 
@@ -184,17 +192,27 @@ class SNS_adapter(sns_list: ArrayList<SNS_list?>) : RecyclerView.Adapter<SNS_ada
                     comment_inflate.comment_txt.text = i?.comment_text
                     itemview.comment_header.addView(comment_inflate)
                 }
+                /*============================= 댓글 수만큼 댓글 만들기 =======================================*/
+
+
+                /*============================= 댓글 수 표시 =======================================*/
                 if (messageList.size != 0) {
                     itemview.sns_comment_visible_txt.text = "댓글" + messageList.size.toString() + "개 보기"
                 } else {
                     itemview.sns_comment_visible_txt.text = "댓글 보기"
                 }
+                /*============================= 댓글 수 표시 =======================================*/
+
+
+                //다른 글에 댓글에 중복 표시 되지 않기 위해 messageList 를 clear 한다.
                 messageList.clear()
             }
 
 
 
         }
+
+        // db listner 등록
         comment.addValueEventListener(Comment_list_Listener)
         return messageList
     }
@@ -217,7 +235,7 @@ class SNS_adapter(sns_list: ArrayList<SNS_list?>) : RecyclerView.Adapter<SNS_ada
     /* ======================댓글 바인딩 하기기 끝 ==================================*/
 
 
-    /*===================sns item 메뉴 함수 =================================*/
+    /*===================sns item 메뉴 함수(수정 , 삭제) =================================*/
     fun sns_getmenu(view: View, context: Context, sns_list: SNS_list?) {
         /*PopupMenu객체 생성
             -생성자함수의 첫번재 파라미터 : Context
@@ -246,6 +264,7 @@ class SNS_adapter(sns_list: ArrayList<SNS_list?>) : RecyclerView.Adapter<SNS_ada
                     /*=======================수정메뉴 클릭시 실행 동작===============================*/
                     R.id.sns_update_menu -> {
 
+                        // 수정하려는 글의 정보를 intent 를 통해전달
                         var intent_update = Intent(context, SNS_write::class.java)
                         intent_update.putExtra("sns_update_context_id",sns_list?.context_id)
                         intent_update.putExtra("sns_update_writer_id",sns_list?.writer_id)
@@ -272,6 +291,7 @@ class SNS_adapter(sns_list: ArrayList<SNS_list?>) : RecyclerView.Adapter<SNS_ada
 
                                     /*============================= 해당 쿼리 삭제 *==============================*/
                                     db.child(sns_list!!.context_id).removeValue()
+                                    Toast.makeText(context,"삭제되었습니다.",Toast.LENGTH_SHORT).show()
                                     /*============================= 해당 쿼리 삭제 *==============================*/
 
                                 } else {

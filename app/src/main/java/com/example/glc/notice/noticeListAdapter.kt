@@ -7,6 +7,14 @@ import android.widget.BaseAdapter
 import com.example.glc.R
 import kotlinx.android.synthetic.main.notice_list_item.view.*
 
+/*
+    공지사항 리스트뷰 어댑터
+    - 파싱한 정보를 Arrarylist 로 받아서
+    - 글제목 , 작성일 , 링크를 UI에 매칭
+ */
+
+
+
 class noitceListAdapter( noticeList : ArrayList<notice>?) : BaseAdapter(){
     var noticeList_adapter = noticeList
 
@@ -28,7 +36,6 @@ class noitceListAdapter( noticeList : ArrayList<notice>?) : BaseAdapter(){
 
         view.notice_tv_1.text = noticeList_adapter?.get(position)?.context
         view.notice_tv_2.text = noticeList_adapter?.get(position)?.date
-        //view.notice_tv_3.text = noticeList_adapter?.get(position)?.url
 
 
         return view

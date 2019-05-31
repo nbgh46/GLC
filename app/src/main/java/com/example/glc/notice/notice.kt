@@ -1,5 +1,10 @@
 package com.example.glc.notice
 
+/*
+    공지사항 class
+    -공지사항을 파싱해서 받아올 정보를  받을 클래스
+ */
+
 
 class notice {
 
